@@ -1,18 +1,26 @@
 # 🛒 Fullstack E-Commerce Application
 
-A complete fullstack ecommerce web application built using React (Vite) and Node.js (Express).
+A complete fullstack ecommerce web application built using **React (Vite)** and **Node.js (Express)**.
+
+---
+
+## 🔗 Live Demo
+
+| Frontend | Backend |
+|----------|---------|
+| [Live Site](https://ecommerce-frontend-u03n.onrender.com) | [API](https://ecommerce-backend-hlls.onrender.com) |
 
 ---
 
 ## 🚀 Tech Stack
 
-Frontend:
+### Frontend
 - React (Vite)
 - React Router
 - Axios
-- Vitest (Testing)
+- Vitest (Unit Testing)
 
-Backend:
+### Backend
 - Node.js
 - Express
 - SQLite
@@ -22,16 +30,20 @@ Backend:
 
 ## 📦 Features
 
-- Product listing
-- Add to cart
-- Order summary
-- Delivery options
-- Order tracking
-- Payment summary logic
-- Backend REST API integration
+- ✅ Product listing  
+- ✅ Add to cart / Update cart  
+- ✅ Order summary and payment summary  
+- ✅ Delivery options  
+- ✅ Order tracking  
+- ✅ Fully integrated backend REST API
 
 ---
 
-## 🛠️ Run Locally
+## 🖥️ Run Locally
 
 ### 1️⃣ Backend
+
+```bash
+cd backend
+npm install
+npm run dev
