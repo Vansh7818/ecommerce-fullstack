@@ -9,9 +9,9 @@ export function CheckoutPage({ cart , loadCart }) {
     const [paymentSummary, setPaymentSummary] = useState(null);
     useEffect(() => {
         const fetchCheckoutData = async () => {
-        let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+        let response = await axios.get('https://ecommerce-backend-hlls.onrender.com/api/delivery-options?expand=estimatedDelivery');
         setDeliveryOptions(response.data);
-        response = await  axios.get('/api/payment-summary');
+        response = await  axios.get('https://ecommerce-backend-hlls.onrender.com/api/payment-summary');
         setPaymentSummary(response.data);
     };
     fetchCheckoutData();
