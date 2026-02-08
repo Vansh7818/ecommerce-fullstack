@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../Downloads/ecommerce-backend-ai-main/ecommerce-backend-ai-main"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ecommerce-backend-ai-main"
+	}
+}
