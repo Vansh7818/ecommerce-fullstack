@@ -167,8 +167,8 @@ For recruiters and hiring managers:
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/Vansh7818)
-- LinkedIn: [Your Profile](https://www.linkedin.com/in/vansh-jain-809b442b9/)
+- GitHub: [@Vansh7818](https://github.com/Vansh7818)
+- LinkedIn: (https://www.linkedin.com/in/vansh-jain-809b442b9/)
 
 ---
 
