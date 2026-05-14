@@ -109,6 +109,9 @@ export function OrdersPage({ cart }) {
                                                         <img
                                                             src={orderProduct.product.image}
                                                             alt={orderProduct.product.name}
+                                                            loading="lazy"
+                                                            width="100"
+                                                            height="100"
                                                         />
                                                     </div>
 
@@ -133,6 +136,9 @@ export function OrdersPage({ cart }) {
                                                                 className="buy-again-icon"
                                                                 src="images/icons/buy-again.png"
                                                                 alt="Buy Again"
+                                                                loading="lazy"
+                                                                width="20"
+                                                                height="20"
                                                             />
 
                                                             <span className="buy-again-message">

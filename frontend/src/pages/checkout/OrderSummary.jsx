@@ -50,7 +50,10 @@ export function OrderSummary({ cart, deliveryOptions ,loadCart }) {
         
                                              <div className="cart-item-details-grid">
                                                  <img className="product-image"
-                                                      src={cartItem.product?.image} />
+                                                      src={cartItem.product?.image} 
+                                                      loading="lazy"
+                                                      width="100"
+                                                      height="100" />
         
                                                  <div className="cart-item-details">
                                                      <div className="product-name">

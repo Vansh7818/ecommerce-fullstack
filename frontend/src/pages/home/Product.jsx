@@ -1,11 +1,11 @@
+import React, { useState, memo } from 'react';
 import api from '../../utils/api';
-import { useState } from 'react';
 import { formatMoney } from '../../utils/money';
-export function Product({ product , loadCart }) {
+
+export const Product = memo(function Product({ product , loadCart }) {
     const [quantity , setQuantity] = useState(1);
     const addToCart = async () => {
         try {
-            // Fixed: Using centralized api instance and simplified URL
             await api.post('/api/cart-items', {
                 productId : product.id,
                 quantity
@@ -31,6 +31,10 @@ export function Product({ product , loadCart }) {
                                         data-testid="product-image"
                                         src={product.image}
                                         alt={product.name}
+                                        loading="lazy"
+                                        decoding="async"
+                                        width="250"
+                                        height="250"
                                     />
                                 </div>
 
@@ -44,6 +48,9 @@ export function Product({ product , loadCart }) {
                                         data-testid="product-rating-stars-image"
                                         src={`images/ratings/rating-${product.rating.stars * 10}.png`}
                                         alt="rating"
+                                        loading="lazy"
+                                        width="100"
+                                        height="20"
                                     />
                                     <div className="product-rating-count link-primary">
                                         {product.rating.count}
@@ -56,23 +63,16 @@ export function Product({ product , loadCart }) {
 
                                 <div className="product-quantity-container">
                                     <select value={quantity} onChange={selectQuantity}>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(val => (
+                                            <option key={val} value={val}>{val}</option>
+                                        ))}
                                     </select>
                                 </div>
 
                                 <div className="product-spacer"></div>
 
                                 <div className="added-to-cart">
-                                    <img src="images/icons/checkmark.png" alt="added" />
+                                    <img src="images/icons/checkmark.png" alt="added" loading="lazy" width="20" height="20" />
                                     Added
                                 </div>
 
@@ -84,4 +84,4 @@ export function Product({ product , loadCart }) {
 
                             </div>
     );
-}
+});
