@@ -1,16 +1,20 @@
-import axios from 'axios';
+import api from './utils/api';
 import { Routes , Route } from 'react-router-dom';
 import { useState , useEffect } from 'react';
 import { HomePage } from './pages/home/HomePage';
 import { CheckoutPage } from './pages/checkout/CheckoutPage';
 import { OrdersPage } from './pages/orders/OrdersPage';
-import './App.css'
 
 function App() {
    const [cart, setCart] = useState([]);
    const loadCart = async () => {
-       const response = await axios.get('https://ecommerce-backend-hlls.onrender.com/api/cart-items?expand=product');
-       setCart(response.data);
+       try {
+           // Fixed: Using centralized api instance and simplified URL
+           const response = await api.get('/api/cart-items?expand=product');
+           setCart(response.data);
+       } catch (error) {
+           console.error("Failed to load cart:", error);
+       }
     };
    useEffect(() => {
     loadCart();

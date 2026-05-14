@@ -1,12 +1,17 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import { useNavigate } from 'react-router';
 import { formatMoney } from '../../utils/money';
 export function PaymentSummary({ paymentSummary , loadCart }) {
     const navigate = useNavigate();
     const createOrder = async () => {
-        await axios.post('/api/orders');
-        await loadCart();
-        navigate('/orders');
+        try {
+            // Fixed: Using centralized api instance
+            await api.post('/api/orders');
+            await loadCart();
+            navigate('/orders');
+        } catch (error) {
+            console.error("Failed to place order:", error);
+        }
     };
     return (
         <div className="payment-summary">

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import { useState , useEffect } from 'react';
 import { OrderSummary } from './OrderSummary';
 import { PaymentSummary } from './PaymentSummary';
@@ -9,13 +9,23 @@ export function CheckoutPage({ cart , loadCart }) {
     const [paymentSummary, setPaymentSummary] = useState(null);
     useEffect(() => {
         const fetchCheckoutData = async () => {
-        let response = await axios.get('https://ecommerce-backend-hlls.onrender.com/api/delivery-options?expand=estimatedDelivery');
-        setDeliveryOptions(response.data);
-        response = await  axios.get('https://ecommerce-backend-hlls.onrender.com/api/payment-summary');
-        setPaymentSummary(response.data);
-    };
-    fetchCheckoutData();
+            try {
+                // Fixed: Using api utility and corrected expand parameter to match backend
+                let response = await api.get('/api/delivery-options?expand=estimatedDeliveryTime');
+                setDeliveryOptions(response.data);
+                
+                response = await api.get('/api/payment-summary');
+                setPaymentSummary(response.data);
+            } catch (error) {
+                console.error("Failed to fetch checkout data:", error);
+            }
+        };
+        fetchCheckoutData();
     }, [cart]);
+
+    // Added: Dynamic cart quantity calculation
+    const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
     return (
         <>
             <title>Checkout</title>
@@ -29,8 +39,9 @@ export function CheckoutPage({ cart , loadCart }) {
                     </div>
 
                     <div className="checkout-header-middle-section">
+                        {/* Fixed: Dynamic cart count */}
                         Checkout (<a className="return-to-home-link"
-                            href="/">3 items</a>)
+                            href="/">{totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}</a>)
                     </div>
 
                     <div className="checkout-header-right-section">

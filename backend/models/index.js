@@ -44,5 +44,5 @@ export async function saveDatabaseToFile() {
   const dbInstance = await sequelize.connectionManager.getConnection();
   const binaryArray = dbInstance.database.export();
   const buffer = Buffer.from(binaryArray);
-  fs.writeFileSync('database.sqlite', buffer);
+  fs.writeFileSync('database/database.sqlite', buffer);
 }

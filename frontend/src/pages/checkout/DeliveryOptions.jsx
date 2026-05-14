@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import axios from 'axios';
+import api from '../../utils/api';
 import { formatMoney } from '../../utils/money';
 export function DeliveryOptions({ cartItem, deliveryOptions , loadCart}) {
     return (
@@ -15,10 +15,15 @@ export function DeliveryOptions({ cartItem, deliveryOptions , loadCart}) {
                     priceString = `${formatMoney(deliveryOption.priceCents)} -Shipping`;
                 }
                 const updateDeliveryOption = async () => {
-                    await axios.put(`/api/cart-items/${cartItem.productId}`, {
-                        deliveryOptionId : deliveryOption.id
-                    });
-                    await loadCart();
+                    try {
+                        // Fixed: Using centralized api instance
+                        await api.put(`/api/cart-items/${cartItem.productId}`, {
+                            deliveryOptionId : deliveryOption.id
+                        });
+                        await loadCart();
+                    } catch (error) {
+                        console.error("Failed to update delivery option:", error);
+                    }
                 };
                 return (
                     <div

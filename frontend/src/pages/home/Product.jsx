@@ -1,15 +1,20 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import { useState } from 'react';
 import { formatMoney } from '../../utils/money';
 export function Product({ product , loadCart }) {
     const [quantity , setQuantity] = useState(1);
     const addToCart = async () => {
-                                    await axios.post('/api/cart-items', {
-                                        productId : product.id,
-                                        quantity
-                                    });
-                                    await loadCart();
-                                };
+        try {
+            // Fixed: Using centralized api instance and simplified URL
+            await api.post('/api/cart-items', {
+                productId : product.id,
+                quantity
+            });
+            await loadCart();
+        } catch (error) {
+            console.error("Failed to add to cart:", error);
+        }
+    };
                                 const selectQuantity = (event) => {
                                         const quantitySelected = Number(event.target.value);
                                         setQuantity(quantitySelected);
