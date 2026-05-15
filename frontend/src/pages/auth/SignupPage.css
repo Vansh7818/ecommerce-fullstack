@@ -1,0 +1,22 @@
+/* Reusing most of LoginPage.css */
+@import './LoginPage.css';
+
+.password-strength {
+  width: 100%;
+  height: 4px;
+  background-color: #eee;
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  width: 0;
+  transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-bar.strong {
+  width: 100%;
+  background-color: #28a745;
+}

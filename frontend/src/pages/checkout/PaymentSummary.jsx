@@ -1,5 +1,5 @@
 import api from '../../utils/api';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { formatMoney } from '../../utils/money';
 export function PaymentSummary({ paymentSummary , loadCart }) {
     const navigate = useNavigate();

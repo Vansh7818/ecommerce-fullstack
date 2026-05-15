@@ -2,13 +2,16 @@ import axios from 'axios';
 
 // Centralized API configuration for better maintainability and environment handling
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000',
+    baseURL: import.meta.env.VITE_API_BASE_URL || '/',
 });
 
 // Added a request interceptor for potential future use (like adding auth tokens)
 api.interceptors.request.use(
     (config) => {
-        // You can add headers here if needed in the future
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
         return config;
     },
     (error) => {

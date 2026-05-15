@@ -134,7 +134,7 @@ export function OrdersPage({ cart }) {
                                                         <button className="buy-again-button button-primary">
                                                             <img
                                                                 className="buy-again-icon"
-                                                                src="images/icons/buy-again.png"
+                                                                src="/images/icons/buy-again.png"
                                                                 alt="Buy Again"
                                                                 loading="lazy"
                                                                 width="20"

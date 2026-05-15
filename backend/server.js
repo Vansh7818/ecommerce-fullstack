@@ -9,8 +9,16 @@ import cartItemRoutes from './routes/cartItems.js';
 import orderRoutes from './routes/orders.js';
 import resetRoutes from './routes/reset.js';
 import paymentSummaryRoutes from './routes/paymentSummary.js';
+import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin.js';
 import { seedDatabase } from './config/dbSeeder.js';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import fs from 'fs';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,8 +26,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
+app.use(helmet({
+  contentSecurityPolicy: false,
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(cors());
 app.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+});
+app.use('/api/', limiter);
 
 // Serve images from the images folder
 app.use('/images', express.static(path.join(__dirname, 'images')));
@@ -30,6 +48,8 @@ app.use('/api/delivery-options', deliveryOptionRoutes);
 app.use('/api/cart-items', cartItemRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/reset', resetRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/payment-summary', paymentSummaryRoutes);
 
 // Serve static files from the dist folder
@@ -45,13 +65,9 @@ app.get('*', (req, res) => {
   }
 });
 
-// Error handling middleware
-/* eslint-disable no-unused-vars */
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
-});
-/* eslint-enable no-unused-vars */
+// Error Handling Middleware
+app.use(notFound);
+app.use(errorHandler);
 
 // Sync database and load default data if none exist
 await sequelize.sync();
@@ -59,5 +75,5 @@ await seedDatabase();
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });

@@ -29,7 +29,7 @@ export const Product = memo(function Product({ product , loadCart }) {
                                     <img
                                         className="product-image"
                                         data-testid="product-image"
-                                        src={product.image}
+                                        src={product.image.startsWith('/') ? product.image : `/${product.image}`}
                                         alt={product.name}
                                         loading="lazy"
                                         decoding="async"
@@ -46,7 +46,7 @@ export const Product = memo(function Product({ product , loadCart }) {
                                     <img
                                         className="product-rating-stars"
                                         data-testid="product-rating-stars-image"
-                                        src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+                                        src={`/images/ratings/rating-${product.rating.stars * 10}.png`}
                                         alt="rating"
                                         loading="lazy"
                                         width="100"
@@ -72,7 +72,7 @@ export const Product = memo(function Product({ product , loadCart }) {
                                 <div className="product-spacer"></div>
 
                                 <div className="added-to-cart">
-                                    <img src="images/icons/checkmark.png" alt="added" loading="lazy" width="20" height="20" />
+                                    <img src="/images/icons/checkmark.png" alt="added" loading="lazy" width="20" height="20" />
                                     Added
                                 </div>
 

@@ -1,4 +1,4 @@
-# 🛒 Modern MERN E-Commerce Platform
+# 🛒 Advanced Professional MERN E-Commerce Platform
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -6,8 +6,9 @@
 [![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
+[![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
 
-> **Internship-Ready Portfolio Project**: A high-performance, full-stack e-commerce solution featuring a clean architecture, optimized rendering, and a production-grade folder structure.
+> **High-Impact Internship Portfolio Project**: A professional, full-stack e-commerce ecosystem featuring secure JWT authentication, role-based access control, a robust admin dashboard, and modern UI/UX with dark mode.
 
 ---
 
@@ -18,31 +19,33 @@
 
 ---
 
-## ✨ Features
+## ✨ Advanced Features
 
-- 🛍️ **Dynamic Product Listing**: Real-time product fetching with search and filter capabilities.
-- 🛒 **Advanced Cart Management**: Add, remove, and update quantities with instant state synchronization.
-- 🚚 **Delivery Optimization**: Integrated delivery options with dynamic shipping cost calculation.
-- 🧾 **Order & Payment Summaries**: Professional checkout flow with detailed price breakdowns and tax calculations.
-- 📦 **Order History**: Persistent order tracking and historical data management.
-- 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile devices.
-- ⚡ **Performance First**: Implements lazy loading, memoization, and loading skeletons.
+- 🔐 **Complete Auth System**: Secure user registration and login using JWT and bcrypt password hashing.
+- 🛡️ **Role-Based Access**: Protected routes for users (Orders, Checkout) and Admins (Dashboard).
+- 📊 **Professional Admin Panel**: Real-time statistics, product management, and user oversight.
+- 🌓 **Dark Mode Support**: Seamless theme switching with persistent user preferences.
+- 🔍 **Advanced Search & Filtering**: Database-level search, category filtering, and price sorting with pagination.
+- 🔔 **Toast Notifications**: Modern feedback system using `react-toastify`.
+- ⚡ **Performance & Security**: Implements Helmet, Rate Limiting, and Skeleton Loaders.
 
 ---
 
 ## 🛠️ Tech Stack
 
 **Frontend**:
-- React 18 (Vite)
-- React Router 6 (Declarative routing)
-- Axios (Centralized API handling)
-- CSS3 (Custom responsive styling)
+- React 19 (Vite)
+- React Router 7 (Declarative routing)
+- AuthContext (Global state management)
+- Lucide React (Iconography)
+- CSS3 (Modern variables & dark mode)
 
 **Backend**:
 - Node.js & Express.js
-- SQLite (Lightweight, persistent storage)
-- Sequelize (ORM for structured data)
-- RESTful API Architecture
+- SQLite (Sequelize ORM)
+- JSON Web Tokens (Authentication)
+- Bcrypt.js (Security)
+- Helmet & Express Rate Limit (Protection)
 
 ---
 
@@ -53,74 +56,51 @@ ecommerce-fullstack/
 ├── backend/
 │   ├── config/          # DB Seeder & configurations
 │   ├── controllers/     # Business logic separation
-│   ├── database/        # SQLite storage files
-│   ├── defaultData/     # Initial seed data
-│   ├── models/          # Sequelize schemas
+│   ├── middleware/      # Auth, Error & Security middleware
+│   ├── models/          # Sequelize schemas (User, Product, etc.)
 │   ├── routes/          # Express route definitions
-│   └── server.js        # Entry point
+│   └── server.js        # Entry point with security config
 ├── frontend/
 │   ├── src/
-│   │   ├── assets/      # Static assets
-│   │   ├── components/  # Reusable UI components
-│   │   ├── pages/       # Page-level components
-│   │   ├── styles/      # Global & modular CSS
-│   │   ├── utils/       # API & helper functions
-│   │   └── App.jsx      # Root component
-├── docs/                # Project documentation
+│   │   ├── components/  # Reusable UI & Protected Routes
+│   │   ├── context/     # Auth & Theme context providers
+│   │   ├── pages/       # Page-level components (Home, Auth, Admin)
+│   │   ├── styles/      # Global CSS & Dark Mode tokens
+│   │   ├── utils/       # API configuration & Interceptors
+│   │   └── App.jsx      # Root routing configuration
+├── docs/                # API Documentation & Guides
 └── README.md
 ```
 
 ---
 
-## 🚀 Performance Optimizations
+## 🚀 Performance & Security Optimizations
 
-This project stands out by implementing several production-level optimizations:
-
-- 🖼️ **Image Optimization**: Implemented `loading="lazy"` and `decoding="async"` for all images to reduce initial bandwidth usage.
-- 🧠 **React.memo Optimization**: Strategic use of memoization in the Product Grid to prevent unnecessary re-renders of list items.
-- 💀 **Loading Skeletons**: Enhanced UX using skeleton loaders during API fetch states to prevent layout shifts.
-- 🌐 **Centralized API Handling**: A unified Axios instance for consistent environment handling and interceptor support.
-- 📐 **Layout Shift Prevention**: Explicit image dimensions set to ensure high Core Web Vitals scores.
-
----
-
-## 👔 Professional Refactoring Done
-
-To ensure this project is internship-ready, the following refactoring was performed:
-
-- **Controller Pattern**: Decoupled route logic from route definitions for better testability and maintenance.
-- **Normalized Structure**: Removed all duplicate files and backup copies to ensure a single source of truth.
-- **Import Optimization**: Cleaned up unused imports and reorganized dependencies.
-- **RESTful Best Practices**: Standardized HTTP methods (GET, POST, PUT, DELETE) and status codes.
-
----
-
-## 📸 Screenshots
-
-| Homepage | Product Grid |
-|:---:|:---:|
-| ![Homepage](frontend/public/screenshots/homepage.png) | ![Product Grid](frontend/public/screenshots/product_grid.png) |
-
-| Checkout Page | Orders Page |
-|:---:|:---:|
-| ![Checkout](frontend/public/screenshots/checkout.png) | ![Orders](frontend/public/screenshots/orders.png) |
-
-| Mobile View |
-|:---:|
-| ![Mobile View](frontend/public/screenshots/mobile_view.png) |
+- 🖼️ **Asset Management**: Optimized static file serving and lazy loading.
+- 🔒 **Security Headers**: Using `Helmet` to set secure HTTP headers.
+- 🚦 **Rate Limiting**: Protection against Brute Force attacks.
+- 🧠 **API Interceptors**: Automatic token injection for authenticated requests.
+- 💀 **Skeletons & Transitions**: Improved perceived performance with smooth UI transitions.
 
 ---
 
 ## ⚙️ Getting Started
 
-### Backend Setup
+### 1. Clone & Install
+```bash
+git clone https://github.com/Vansh7818/ecommerce-fullstack.git
+cd ecommerce-fullstack
+```
+
+### 2. Backend Setup
 ```bash
 cd backend
 npm install
+# Create .env based on .env.example
 npm start
 ```
 
-### Frontend Setup
+### 3. Frontend Setup
 ```bash
 cd frontend
 npm install
@@ -129,51 +109,23 @@ npm run dev
 
 ---
 
-## 🔑 Environment Variables
+## 🌐 API Documentation
 
-### Frontend (`frontend/.env`)
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-### Backend (`backend/.env`)
-```env
-PORT=3000
-CORS_ORIGIN=http://localhost:5173
-```
+Detailed API documentation can be found in [docs/api-documentation.md](docs/api-documentation.md).
 
 ---
 
-## 🌐 API Structure
+## 🏆 Interview Ready Talking Points
 
-- `GET /api/products` - Fetch all products
-- `POST /api/cart-items` - Add item to cart
-- `DELETE /api/cart-items/:id` - Remove item from cart
-- `GET /api/orders` - Fetch order history
-- `POST /api/orders` - Place a new order
-
----
-
-## 🏆 Why This Project Stands Out
-
-For recruiters and hiring managers:
-- **Fullstack Competency**: Demonstrates ability to connect a frontend UI with a persistent backend database.
-- **Performance Aware**: Showcases knowledge of modern web performance metrics and React optimizations.
-- **Clean Code**: Adheres to the principle of separation of concerns through the Controller/Route pattern.
-- **Production Mindset**: Includes documentation, environment handling, and a professional layout.
+- **Scalable Architecture**: "I implemented a decoupled Controller-Service pattern to ensure the backend is maintainable and testable."
+- **Security First**: "The application uses JWT with HttpOnly storage concepts (simulated) and bcrypt for password security, alongside Rate Limiting to prevent abuse."
+- **UX Excellence**: "I prioritized user experience by adding dark mode, skeleton loaders, and debounced search to provide a native-app feel."
+- **Clean Code**: "The project follows SOLID principles, especially Dependency Inversion through a centralized API service."
 
 ---
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Vansh Jain**
 - GitHub: [@Vansh7818](https://github.com/Vansh7818)
-- LinkedIn: (https://www.linkedin.com/in/vansh-jain-809b442b9/)
-
----
-
-## 🏁 Future Improvements
-- [ ] User Authentication (JWT)
-- [ ] Admin Dashboard for product management
-- [ ] Payment Gateway Integration (Stripe)
-- [ ] Product Reviews and Ratings system
+- LinkedIn: [Vansh Jain](https://www.linkedin.com/in/vansh-jain-809b442b9/)

@@ -14,7 +14,7 @@ export function HomePage({ cart , loadCart }) {
             try {
                 setLoading(true);
                 const response = await api.get('/api/products');
-                setProducts(response.data);
+                setProducts(response.data.data || []);
             } catch (error) {
                 console.error("Failed to load products:", error);
             } finally {
